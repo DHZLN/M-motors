@@ -50,5 +50,97 @@ Il s’inscrit dans une stratégie de diversification des revenus de l’entrepr
 - Authentification via JWT (JSON Web Token)
 - Protection des données clients
 - Préparation aux exigences RPO / RTO
+
+  ---
+
+## 🧠 Méthodologie de gestion de projet
+
+- Méthodologie Agile : Scrum
+- Livraison incrémentale via MVP
+- Découpage fonctionnel par EPICs
+- Gestion du backlog produit
+- Prise en compte des notions :
+   - Definition of Ready (DoR)
+   - Definition of Done (DoD)
+
+---
+
+## 🏗️ Architecture générale
+- Front-end : React (SPA)
+- Back-end : API REST Spring Boot
+- Base de données : MySQL (relationnelle)
+- Stockage documents : Google Cloud Storage (GCS)
+- Hébergement : Google Cloud Platform (GCP)
+- Déploiement : Heroku
+
+Architecture conçue pour :
+ - Séparation front / back
+ - Scalabilité
+ - Évolutivité fonctionnelle
+ - Intégrations futures (signature électronique, reporting, automatisation)
+   
+--- 
+## 🛠️ Technologies utilisées
+
+## Langages
+- Java
+- JavaScript
+- HTML
+- CSS
+  
+## Outils de développement :
+- Vs Code
+  
+## Frameworks & bibliothèques
+
+- React – Interface utilisateur dynamique
+- Spring Boot  : Framework Web
+- Spring Security : Framework de sécurité
+- Spring Data JPA – Framework de gestion de base de données
+- JWT – Gestion des accès
+
+## Base de données & stockage
+
+- MySQL – Données structurées (clients, véhicules, dossiers)
+- Google Cloud Storage – Documents dématérialisés
+
+## Outils & DevOps*
+
+- Git / GitHub
+- GitHub Actions (CI/CD)
+- Jira Software
+- Microsoft Teams
+  ---
+
+## 🚀 Installation & démarrage
+## Prérequis
+
+- Java 17 ou +
+- Node.js
+- MySQL
+- Maven
+- Git
+
+  ## Installation :
+ 1. Cloner le dépôt
+     ``` https://github.com/DHZLN/M-motors  ```
+    2. Configurer la base de données MySQL
+    3. Renseigner les variables dans :
+    4.  ``` backend/src/main/resources/application.yml ```
+        ``` spring:
+             datasource :
+               url : jdbc:mysql://localhost:3306/motors
+               username : your_username
+               password : your_password
+
+            jwt:
+              secret : your_secret_key  ```
+    
+
+
+
+
+
+  
   
 
