@@ -1,4 +1,4 @@
-package com.m_motors.m_motors_app;
+package com.m_motors.mmotors_app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
