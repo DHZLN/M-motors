@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de Bord Admin - M-Motors</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/admin/dashboard">Tableau de Bord</a>
+            <a href="/admin/dossiers">Gérer les Dossiers</a>
+            <a href="/admin/vehicules">Gérer les Véhicules</a>
+            <a href="/admin/utilisateurs">Gérer les Utilisateurs</a>
+            <a href="/deconnexion">Déconnexion</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Tableau de Bord Administrateur</h1>
+        <p>Vue d'ensemble et gestion des opérations de M-Motors.</p>
+
+        <h2>Statistiques Rapides</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Dossiers en Attente</h3>
+                <p class="stat-number">15</p>
+            </div>
+            <div class="stat-card">
+                <h3>Nouveaux Clients (aujourd'hui)</h3>
+                <p class="stat-number">3</p>
+            </div>
+            <div class="stat-card">
+                <h3>Véhicules en Stock</h3>
+                <p class="stat-number">120</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 M-Motors. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

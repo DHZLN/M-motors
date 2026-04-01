@@ -1,4 +1,4 @@
-package com.m_motors.m_motors_app;
+package com.mmotors.m_motors_app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

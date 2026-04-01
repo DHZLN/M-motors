@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>M-Motors App</title>
+    <meta charset="UTF-8">
+    <title>Accueil - M-Motors</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Bienvenue sur M-Motors App !</h1>
+    <header>
+        <nav>
+            <a href="/">Accueil</a>
+            <a href="/vehicules">Nos Véhicules</a>
+            <a href="/inscription">S'inscrire</a>
+            <a href="/connexion">Se connecter</a>
+            <!-- Liens conditionnels plus tard (client/admin) -->
+        </nav>
+    </header>
+    <main>
+        <h1>Bienvenue chez M-Motors !</h1>
+        <p>Votre partenaire pour l'achat et la location longue durée de véhicules.</p>
+        <a href="/vehicules" class="button">Voir nos véhicules</a>
+    </main>
+    <footer>
+        <p>&copy; 2026 M-Motors. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>

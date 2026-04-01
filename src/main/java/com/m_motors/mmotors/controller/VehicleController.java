@@ -1,38 +1,19 @@
-package com.mmotors.app.controller;
+package com.mmotors.m_motors_app.controller;
 
-import com.mmotors.app.model.Vehicle;
-import com.mmotors.app.service.VehicleService;
-import org.springframework.web.bind.annotation.*;
+import com.mmotors.m_motors_app.service.VehicleService;
 
-import java.util.List;
-
-@RestController
-@RequestMapping("/vehicles")
-public class VehicleController {
-
+public class VehicleController { // Pas @Controller pour l'instant
     private final VehicleService vehicleService;
 
-    public VehicleController(VehicleService vehicleService){
+    public VehicleController(VehicleService vehicleService) {
         this.vehicleService = vehicleService;
     }
 
-    @GetMapping
-    public List<Vehicle> getVehicles(){
-        return vehicleService.getAllVehicles();
+    public String rechercherVehicules(String marque, String modele) {
+        return "vehicules/liste";
     }
 
-    @GetMapping("/{id}")
-    public Vehicle getVehicleById(@PathVariable Long id){
-        return vehicleService.getVehicleById(id);
-    }
-
-    @PostMapping
-    public Vehicle createVehicle(@RequestBody Vehicle vehicle){
-        return vehicleService.saveVehicle(vehicle);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteVehicle(@PathVariable Long id){
-        vehicleService.deleteVehicle(id);
+    public String detailVehicule(Long id) {
+        return "vehicules/detail";
     }
 }

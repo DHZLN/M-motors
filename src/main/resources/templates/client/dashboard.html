@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de Bord Client - M-Motors</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/client/dashboard">Mon Tableau de Bord</a>
+            <a href="/client/dossiers">Mes Dossiers</a>
+            <a href="/deconnexion">Déconnexion</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Bienvenue, [Nom du Client] !</h1>
+        <p>Ici, vous pouvez suivre l'état de vos demandes, accéder à vos documents et modifier vos informations.</p>
+
+        <h2>Vos Dossiers Récentes</h2>
+        <div class="dossier-list">
+            <div class="dossier-card">
+                <h3>Dossier #1234 - Renault Clio V</h3>
+                <p><strong>Statut :</strong> En attente de documents</p>
+                <p><strong>Type d'offre :</strong> LLD</p>
+                <a href="/client/dossiers/1234">Voir les détails du dossier</a>
+            </div>
+            <div class="dossier-card">
+                <h3>Dossier #1235 - Peugeot 308</h3>
+                <p><strong>Statut :</strong> En cours d'analyse</p>
+                <p><strong>Type d'offre :</strong> Achat</p>
+                <a href="/client/dossiers/1235">Voir les détails du dossier</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 M-Motors. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

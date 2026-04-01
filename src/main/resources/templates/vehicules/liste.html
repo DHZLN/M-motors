@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Véhicules - M-Motors</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Nos Véhicules</h1>
+
+    <form action="/vehicules" method="get">
+        <input type="text" name="marque" placeholder="Marque">
+        <input type="text" name="modele" placeholder="Modèle">
+        <select name="typeOffre">
+            <option value="">Tous les types</option>
+            <option value="ACHAT">Achat</option>
+            <option value="LLD">LLD</option>
+        </select>
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <div class="vehicle-list">
+        <!-- Exemple de carte de véhicule statique -->
+        <div class="vehicle-card">
+            <img src="https://via.placeholder.com/150" alt="Photo véhicule" class="vehicle-photo">
+            <h3>Renault Clio V</h3>
+            <p>Prix : 18 500 € ou LLD à partir de 250 €/mois</p>
+            <a href="/vehicules/1">Voir les détails</a>
+        </div>
+        <div class="vehicle-card">
+            <img src="https://via.placeholder.com/150" alt="Photo véhicule" class="vehicle-photo">
+            <h3>Peugeot 308</h3>
+            <p>Prix : 25 000 € ou LLD à partir de 350 €/mois</p>
+            <a href="/vehicules/2">Voir les détails</a>
+        </div>
+        <!-- ... d'autres véhicules ... -->
+    </div>
+</body>
+</html>
