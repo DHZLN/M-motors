@@ -1,4 +1,4 @@
-package com.mmotors.m_motors_app.model;
+package com.m_motors.mmotors.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

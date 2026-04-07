@@ -1,7 +1,7 @@
-package com.mmotors.m_motors_app.controller;
+package com.m_motors.mmotors.controller;
 
-import com.mmotors.m_motors_app.model.User;
-import com.mmotors.m_motors_app.service.UserService;
+import com.m_motors.mmotors.model.User;
+import com.m_motors.mmotors.service.UserService;
 
 public class UserController { // Pas @Controller pour l'instant
     private final UserService userService;

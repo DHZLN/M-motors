@@ -1,11 +1,12 @@
-package com.mmotors.m_motors_app.repository;
+package com.m_motors.mmotors.repository;
 
-import com.mmotors.m_motors_app.model.User;
+import com.m_motors.mmotors.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.Optional;
 
-public interface UserRepository {
-    User save(User user);
-    Optional<User> findById(Long id);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
-    boolean existsByEmail(String email);
 }

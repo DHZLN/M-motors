@@ -1,4 +1,4 @@
-package com.mmotors.m_motors_app.model;
+package com.m_motors.mmotors.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,7 +32,8 @@ public class Dossier {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatutDossier statut = StatutDossier.EN_ATTENTE_DOCUMENTS;
+    @Builder.Default
+private StatutDossier statut = StatutDossier.EN_ATTENTE_DOCUMENTS;
 
     // Options LLD
     private Boolean assuranceTousRisques;

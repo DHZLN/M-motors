@@ -1,27 +1,50 @@
-package com.mmotors.m_motors_app.service;
+package com.m_motors.mmotors.service;
 
-import com.mmotors.m_motors_app.model.Dossier;
-import com.mmotors.m_motors_app.model.StatutDossier;
-import com.mmotors.m_motors_app.repository.DossierRepository;
+import com.m_motors.mmotors.model.Dossier;
+import com.m_motors.mmotors.model.StatutDossier;
+import com.m_motors.mmotors.repository.DossierRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public class DossierService { // Pas @Service pour l'instant
+@Service
+public class DossierService {
+
     private final DossierRepository dossierRepository;
 
     public DossierService(DossierRepository dossierRepository) {
         this.dossierRepository = dossierRepository;
     }
 
+    public List<Dossier> getAllDossiers() {
+    return dossierRepository.findAll();
+}
+
     public Dossier creerDossier(Dossier dossier) {
-        System.out.println("Création de dossier pour : " + dossier.getClient().getEmail());
-        return null;
+        dossier.setStatut(StatutDossier.EN_ATTENTE_DOCUMENTS);
+        return dossierRepository.save(dossier);
     }
 
     public List<Dossier> getDossiersByClientId(Long clientId) {
-        return List.of();
+        return dossierRepository.findByClientId(clientId);
+    }
+
+    public List<Dossier> getDossiersByStatut(StatutDossier statut) {
+        return dossierRepository.findByStatut(statut);
+    }
+
+    public Dossier getDossierById(Long id) {
+        return dossierRepository.findById(id).orElse(null);
     }
 
     public Dossier updateStatut(Long dossierId, StatutDossier nouveauStatut) {
-        return null;
+        Dossier dossier = dossierRepository.findById(dossierId).orElse(null);
+
+        if (dossier == null) {
+            return null;
+        }
+
+        dossier.setStatut(nouveauStatut);
+        return dossierRepository.save(dossier);
     }
 }

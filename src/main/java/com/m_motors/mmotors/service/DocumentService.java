@@ -1,7 +1,7 @@
-package com.mmotors.m_motors_app.service;
+package com.m_motors.mmotors.service;
 
-import com.mmotors.m_motors_app.model.Document;
-import com.mmotors.m_motors_app.repository.DocumentRepository;
+import com.m_motors.mmotors.model.Document;
+import com.m_motors.mmotors.repository.DocumentRepository;
 
 public class DocumentService { // Pas @Service pour l'instant
     private final DocumentRepository documentRepository;

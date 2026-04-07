@@ -1,6 +1,6 @@
-package com.mmotors.m_motors_app.repository;
+package com.m_motors.mmotors.repository;
 
-import com.mmotors.m_motors_app.model.Document;
+import com.m_motors.mmotors.model.Document;
 import java.util.List;
 import java.util.Optional;
 

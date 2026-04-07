@@ -1,14 +1,15 @@
-package com.mmotors.m_motors_app.service;
+package com.m_motors.mmotors.service;
 
-import com.mmotors.m_motors_app.model.Vehicle;
-import com.mmotors.m_motors_app.model.TypeOffre;
-import com.mmotors.m_motors_app.repository.VehicleRepository;
+import com.m_motors.mmotors.model.TypeOffre;
+import com.m_motors.mmotors.model.Vehicle;
+import com.m_motors.mmotors.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service  // ← Ajoute cette annotation
+@Service
 public class VehicleService {
+
     private final VehicleRepository vehicleRepository;
 
     public VehicleService(VehicleRepository vehicleRepository) {
@@ -16,15 +17,22 @@ public class VehicleService {
     }
 
     public List<Vehicle> rechercherVehicules(String marque, String modele, TypeOffre typeOffre) {
-        System.out.println("Recherche de véhicules : " + marque + ", " + modele);
-        return List.of(); // Liste vide pour l'instant
+        return vehicleRepository.rechercherVehicules(
+                (marque == null || marque.isBlank()) ? null : marque,
+                (modele == null || modele.isBlank()) ? null : modele,
+                typeOffre
+        );
+    }
+
+    public List<Vehicle> getAllVehicules() {
+        return vehicleRepository.findAll();
     }
 
     public Vehicle getVehiculeById(Long id) {
-        return null;
+        return vehicleRepository.findById(id).orElse(null);
     }
 
     public Vehicle saveVehicule(Vehicle vehicle) {
-        return null;
+        return vehicleRepository.save(vehicle);
     }
 }

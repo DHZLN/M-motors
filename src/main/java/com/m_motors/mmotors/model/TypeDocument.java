@@ -1,4 +1,4 @@
-package com.mmotors.m_motors_app.model;
+package com.m_motors.mmotors.model;
 
 public enum TypeDocument {
     CARTE_IDENTITE,

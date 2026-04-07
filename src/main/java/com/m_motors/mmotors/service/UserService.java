@@ -1,23 +1,34 @@
-package com.mmotors.m_motors_app.service;
+package com.m_motors.mmotors.service;
 
-import com.mmotors.m_motors_app.model.User;
-import com.mmotors.m_motors_app.repository.UserRepository;
+import com.m_motors.mmotors.model.User;
+import com.m_motors.mmotors.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-public class UserService { // Pas @Service pour l'instant
+@Service
+public class UserService {
+
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User inscrire(User user) {
-        // Logique d'inscription plus tard
-        System.out.println("Inscription de l'utilisateur : " + user.getEmail());
-        return null;
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("Email déjà utilisé");
+        }
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole("CLIENT");
+        user.setEnabled(true);
+
+        return userRepository.save(user);
     }
 
     public User findByEmail(String email) {
-        // Recherche par email plus tard
-        return null;
+        return userRepository.findByEmail(email).orElse(null);
     }
 }
