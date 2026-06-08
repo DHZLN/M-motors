@@ -37,6 +37,9 @@ public class Dossier {
 
     private LocalDateTime dateCreation;
 
+    @Column(length = 1000)
+    private String internalComment;
+
     @OneToMany(mappedBy = "dossier", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Document> documents;
 }

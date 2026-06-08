@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
@@ -9,38 +10,86 @@
 <body class="admin-body">
 
 <header class="admin-topbar">
-    <div class="admin-logo">M-Motors <span>Admin</span></div>
+    <div class="admin-logo">
+        M-Motors <span>Admin</span>
+    </div>
 
     <nav class="admin-nav">
-        <a th:href="@{/admin/dashboard}">Tableau de bord</a>
-        <a th:href="@{/admin/dossiers}">Dossiers</a>
-        <a th:href="@{/admin/vehicules}">Véhicules</a>
-        <a th:href="@{/}">Voir le site</a>
+        <a th:href="@{/admin/dashboard}">
+            Tableau de bord
+        </a>
+
+        <a th:href="@{/admin/dossiers}">
+            Dossiers
+        </a>
+
+        <a th:href="@{/admin/vehicules}">
+            Véhicules
+        </a>
+
+        <a th:href="@{/}">
+            Voir le site
+        </a>
     </nav>
 
     <form th:action="@{/logout}" method="post">
-        <button type="submit" class="admin-logout">Déconnexion</button>
+        <button type="submit"
+                class="admin-logout">
+
+            Déconnexion
+
+        </button>
     </form>
 </header>
 
 <main class="admin-dashboard">
+
+    <!-- HERO -->
+
     <section class="admin-hero">
-        <p class="admin-kicker">Traitement du dossier</p>
-        <h1>Dossier #<span th:text="${dossier.id}">1</span></h1>
-        <p>Consultez les informations du client, du véhicule et mettez à jour le statut du dossier.</p>
+
+        <p class="admin-kicker">
+            Traitement du dossier
+        </p>
+
+        <h1>
+            Dossier #
+            <span th:text="${dossier.id}">
+                1
+            </span>
+        </h1>
+
+        <p>
+            Consultez les informations du client,
+            du véhicule et mettez à jour
+            le statut du dossier.
+        </p>
+
     </section>
 
+    <!-- GRID INFO + STATUT -->
+
     <section class="dossier-detail-grid">
+
+        <!-- INFOS -->
+
         <div class="dossier-detail-card">
-            <h2>Informations générales</h2>
+
+            <h2>
+                Informations générales
+            </h2>
 
             <div class="info-line">
                 <strong>Client</strong>
-                <span th:text="${dossier.client != null ? dossier.client.email : 'N/A'}">client@email.com</span>
+
+                <span th:text="${dossier.client != null ? dossier.client.email : 'N/A'}">
+                    client@email.com
+                </span>
             </div>
 
             <div class="info-line">
                 <strong>Véhicule</strong>
+
                 <span th:text="${dossier.vehicule != null ? dossier.vehicule.marque + ' ' + dossier.vehicule.modele : 'N/A'}">
                     BMW Série 5
                 </span>
@@ -48,45 +97,175 @@
 
             <div class="info-line">
                 <strong>Type d'offre</strong>
-                <span th:text="${dossier.typeOffre}">ACHAT</span>
+
+                <span th:text="${dossier.typeOffre}">
+                    ACHAT
+                </span>
             </div>
 
             <div class="info-line">
                 <strong>Statut actuel</strong>
-                <span class="status-badge" th:text="${dossier.statut}">EN_ATTENTE_DOCUMENTS</span>
+
+                <span class="status-badge"
+                      th:text="${dossier.statut}">
+                    EN_ATTENTE_DOCUMENTS
+                </span>
             </div>
+
         </div>
 
-        <div class="dossier-detail-card">
-            <h2>Changer le statut</h2>
+        <!-- CHANGER STATUT -->
 
-            <form th:action="@{/admin/dossiers/{id}/statut(id=${dossier.id})}" method="post">
+        <div class="dossier-detail-card">
+
+            <h2>
+                Changer le statut
+            </h2>
+
+            <form th:action="@{/admin/dossiers/{id}/statut(id=${dossier.id})}"
+                  method="post">
+
                 <div class="form-group">
-                    <label for="statut">Nouveau statut</label>
-                    <select id="statut" name="statut" required>
+
+                    <label for="statut">
+                        Nouveau statut
+                    </label>
+
+                    <select id="statut"
+                            name="statut"
+                            required>
+
                         <option th:each="statut : ${statuts}"
                                 th:value="${statut}"
                                 th:text="${statut}"
                                 th:selected="${statut == dossier.statut}">
                         </option>
+
                     </select>
+
                 </div>
 
-                <button type="submit" class="btn-primary">Mettre à jour</button>
+                <button type="submit"
+                        class="btn-primary">
+
+                    Mettre à jour
+
+                </button>
+
             </form>
 
-            <div class="document-empty" style="margin-top: 24px;">
-                Le changement de statut permettra au client de suivre l’avancement de son dossier depuis son espace personnel.
+            <div class="document-empty"
+                 style="margin-top: 24px;">
+
+                Le changement de statut permettra au client
+                de suivre l’avancement de son dossier
+                depuis son espace personnel.
+
             </div>
+
         </div>
+
     </section>
 
-    <section class="dossier-detail-card" style="margin-top: 28px;">
-        <h2>Documents téléversés</h2>
+    <!-- COMMENTAIRE ADMIN -->
+
+    <section class="dossier-detail-card dossier-section">
+
+        <h2>
+            Commentaire interne
+        </h2>
+
+        <form th:action="@{/admin/dossiers/{id}/commentaire(id=${dossier.id})}"
+              method="post">
+
+            <div class="form-group">
+
+                <label for="internalComment">
+
+                    Ajouter une note interne
+                    (visible uniquement
+                    par les administrateurs)
+
+                </label>
+
+                <textarea
+                        id="internalComment"
+                        name="internalComment"
+                        rows="6"
+                        class="form-control"
+                        placeholder="Ajouter un commentaire sur les échanges avec le prospect..."
+                        th:text="${dossier.internalComment}">
+                </textarea>
+
+            </div>
+
+            <button type="submit"
+                    class="btn-primary">
+
+                Enregistrer le commentaire
+
+            </button>
+
+        </form>
+
+        <div class="document-empty comment-note">
+
+            Ce commentaire est réservé
+            au back-office administrateur
+            et n’est jamais visible
+            par le client.
+
+        </div>
+
+    </section>
+
+    <!-- SUIVI COMMERCIAL -->
+
+    <section class="dossier-detail-card dossier-section">
+
+        <h2>
+            Suivi commercial du dossier
+        </h2>
+
+        <div class="comment-history-box">
+
+            <div th:if="${dossier.internalComment != null and !dossier.internalComment.isEmpty()}">
+
+                <div class="comment-history-title">
+                    Dernier commentaire enregistré
+                </div>
+
+                <p class="comment-history-text"
+                   th:text="${dossier.internalComment}">
+                </p>
+
+            </div>
+
+            <div th:if="${dossier.internalComment == null or dossier.internalComment.isEmpty()}">
+
+                Aucun commentaire enregistré
+                pour ce dossier.
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DOCUMENTS -->
+
+    <section class="dossier-detail-card dossier-section">
+
+        <h2>
+            Documents téléversés
+        </h2>
 
         <div th:if="${dossier.documents != null and !dossier.documents.isEmpty()}">
+
             <div class="admin-table-wrapper">
+
                 <table class="admin-table">
+
                     <thead>
                     <tr>
                         <th>Type</th>
@@ -95,26 +274,60 @@
                         <th>Taille</th>
                     </tr>
                     </thead>
+
                     <tbody>
+
                     <tr th:each="doc : ${dossier.documents}">
-                        <td th:text="${doc.typeDocument}">PIECE_IDENTITE</td>
-                        <td th:text="${doc.nomOriginal}">document.pdf</td>
-                        <td th:text="${doc.typeMime}">application/pdf</td>
-                        <td th:text="${doc.tailleOctets + ' octets'}">12000 octets</td>
+
+                        <td th:text="${doc.typeDocument}">
+                            PIECE_IDENTITE
+                        </td>
+
+                        <td th:text="${doc.nomOriginal}">
+                            document.pdf
+                        </td>
+
+                        <td th:text="${doc.typeMime}">
+                            application/pdf
+                        </td>
+
+                        <td th:text="${doc.tailleOctets + ' octets'}">
+                            12000 octets
+                        </td>
+
                     </tr>
+
                     </tbody>
+
                 </table>
+
             </div>
+
         </div>
 
-        <div class="document-empty" th:if="${dossier.documents == null or dossier.documents.isEmpty()}">
-            Aucun document téléversé pour ce dossier.
+        <div class="document-empty"
+             th:if="${dossier.documents == null or dossier.documents.isEmpty()}">
+
+            Aucun document téléversé
+            pour ce dossier.
+
         </div>
+
     </section>
 
+    <!-- ACTIONS -->
+
     <div class="dossier-detail-actions">
-        <a th:href="@{/admin/dossiers}" class="btn-secondary">Retour aux dossiers</a>
+
+        <a th:href="@{/admin/dossiers}"
+           class="btn-secondary">
+
+            Retour aux dossiers
+
+        </a>
+
     </div>
+
 </main>
 
 <footer class="admin-footer">
@@ -123,3 +336,4 @@
 
 </body>
 </html>
+```

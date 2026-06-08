@@ -2708,3 +2708,31 @@ footer {
 .dossier-detail-wrapper {
     margin-bottom: 120px;
 }
+
+/* ==========================
+   COMMENTAIRE ADMIN DOSSIER
+========================== */
+
+.comment-history-box {
+    background: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    border-radius: 18px;
+    padding: 24px;
+    margin-top: 20px;
+    color: #1f1f1f;
+}
+
+.comment-history-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #111;
+}
+
+.comment-history-text {
+    margin-top: 16px;
+    font-size: 16px;
+    color: #222;
+    line-height: 1.8;
+    white-space: pre-line;
+}
